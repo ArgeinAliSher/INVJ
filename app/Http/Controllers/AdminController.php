@@ -17,4 +17,21 @@ class AdminController extends Controller
         // Here we provide posts from the database to prop that we created in component
         return Inertia::render('SignIn');
     }
+
+    public function settings()
+    {
+        // Here we provide posts from the database to prop that we created in component
+        return Inertia::render('Settings');
+    }
+
+    public function manageCategory()
+    {
+        // Here we provide posts from the database to prop that we created in component
+        return Inertia::render('ManageCategory');
+    }
+    public function categoryOrders()
+    {
+        // Here we provide posts from the database to prop that we created in component
+        return Inertia::render('CategoryOrders');
+    }
 }
