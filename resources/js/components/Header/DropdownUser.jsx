@@ -2,10 +2,20 @@ import { useState } from 'react';
 import { Link } from '@inertiajs/react'
 import ClickOutside from '../ClickOutside';
 import UserOne from '../../../images/user/user-01.png';
+import api from '../../api';
+import { Inertia } from '@inertiajs/inertia';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  
+  const logout = async () => {
+    try {
+        await api.post('/logout');
+        Inertia.visit('/'); // Redirect to login
+    } catch (err) {
+        console.error('Logout failed', err);
+    }
+};
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
       <Link
@@ -119,7 +129,7 @@ const DropdownUser = () => {
               </Link>
             </li>
           </ul>
-          <button className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+          <button onClick={logout} className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
             <svg
               className="fill-current"
               width="22"
